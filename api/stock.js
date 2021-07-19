@@ -1,7 +1,8 @@
-const express = require('express')
-const cors = require('cors')
-const app = express()
-const router = express.Router()
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getStockInfo = void 0;
+const tslib_1 = require("tslib");
+const faker_1 = tslib_1.__importDefault(require("faker"));
 const yahooFinance = require('yahoo-finance') // https://www.npmjs.com/package/yahoo-finance
 const moment = require('moment')
 var _ = require('lodash');
@@ -13,7 +14,7 @@ let twoWeeksAgo = d.setDate(d.getDate() - 365);
 twoWeeksAgo = new Date(twoWeeksAgo).toISOString().substring(0, 10);;
 
 
-var historical = function (symbol, from, to, callback) {
+let historical = function (symbol, from, to, callback) {
     yahooFinance.historical(
     {
       symbol: symbol,
@@ -43,6 +44,7 @@ var historical = function (symbol, from, to, callback) {
       
       const ret = {}
       // ret.quotes = quotes
+      // console.log(quotes)
       ret.candlestickSeries = candlestickSeries
       ret.volumeSeries = volumeSeries
       callback(null, ret)
@@ -56,28 +58,17 @@ historical('2603.TW', twoWeeksAgo, today, function(error, result) {
     retJSON = result
 }) 
 
-
-app.use('/api', router)
-
-app.use(cors())
-
-// Enable CORS for a Single Route
-router.get('/vt', cors(), function (req, res) {
-  res.json({
-    errno: 0,
-    etf: retJSON.quotes,
-    candlestickSeries: retJSON.candlestickSeries,
-    volumeSeries: retJSON.volumeSeries
-  })
-})
-
-const port = process.env.PORT || 8080
-
-module.exports = app.listen(port, function (err) {
-  if (err) {
-    console.log(err)
-    return
-  }
-  console.log('Listening at http://localhost:' + port + '/api/vt\n')
-  // http://localhost:8080/api/vt
-})
+const getTransactions = (req, res) => {
+    return res.json({
+        code: 0,
+        result: {
+          token: faker_1.default.datatype.uuid(),
+          etf: retJSON.quotes,
+          candlestickSeries: retJSON.candlestickSeries,
+          volumeSeries: retJSON.volumeSeries
+        },
+        message:"ok",
+        type:"success"
+    });
+};
+exports.getStockInfo = getTransactions;

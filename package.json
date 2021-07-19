@@ -6,13 +6,19 @@
   "author": "jacobhsu <jacob.hsu.tw@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "server": "node ./vt"
+    "server": "node api/index.js"
   },
   "dependencies": {
+    "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "faker": "^5.5.3",
     "lodash": "^4.17.15",
     "moment": "^2.26.0",
-    "yahoo-finance": "^0.3.6"
+    "morgan": "^1.10.0",
+    "swagger-routes-express": "^3.3.0",
+    "tslib": "^2.3.0",
+    "yahoo-finance": "^0.3.6",
+    "yamljs": "^0.3.0"
   }
 }

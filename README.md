@@ -1,6 +1,7 @@
 # react-lightweight-server
 
-http://localhost:3000/mock-api/v1/stock
+http://localhost:3000/api/v1/stock
+https://react-lightweight-server.vercel.app/api/v1/stock
 
 vercel
 

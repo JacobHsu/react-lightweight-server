@@ -9,7 +9,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 servers:
-  - url: /mock-api/v1
+  - url: /api/v1
 tags:
   - name: mock
     description: Mock data related api.

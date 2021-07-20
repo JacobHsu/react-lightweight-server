@@ -58,7 +58,7 @@ const server = http_1.default.createServer(app);
 // Listen on provided port, on all network interfaces.
 server.listen(port);
 server.on('error', onError);
-console.log('http://localhost:' + port + '/mock-api/v1/stock');
+console.log('http://localhost:' + port + '/api/v1/stock');
 // Event listener for HTTP server "error" event.
 function onError(error) {
   if (error.syscall !== 'listen') {
